@@ -26,12 +26,8 @@ public class EndorsementLike {
     @Type(type = "uuid-char")
     private UUID uuid;
 
-    // Foreign Keys
-//    @ManyToOne
-//    private User user;
-
-    @Column(name = "GRANTER_UUID")
-    private UUID granterUuid;
+    @Column(name = "GRANTER_USERNAME")
+    private String granterUsername;
 
     @ManyToOne
     private Endorsement endorsement;
@@ -42,11 +38,11 @@ public class EndorsementLike {
     @Temporal(TemporalType.DATE)
     private Date created;
 
-    public EndorsementLike(/*User user, */UUID granterUuid, String reason) {
-//        this.user = user;
-        this.uuid = UUID.randomUUID();
-        this.granterUuid = granterUuid;
-        this.reason = reason;
-    }
+//    public EndorsementLike(/*User user, */UUID granterUuid, String reason) {
+////        this.user = user;
+//        this.uuid = UUID.randomUUID();
+//        this.granterUuid = granterUuid;
+//        this.reason = reason;
+//    }
 
 }
