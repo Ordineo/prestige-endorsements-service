@@ -33,11 +33,11 @@ public class Endorsement implements Serializable {
 //    @ManyToOne
 //    private User receiver;
 
-    @Column(name = "GRANTER_UUID")
-    private UUID granterUuid;
+    @Column(name = "GRANTER_USERNAME", length = 40)
+    private String granterUsername;
 
-    @Column(name = "RECEIVER_UUID")
-    private UUID receiverUuid;
+    @Column(name = "RECEIVER_USERNAME", length = 40)
+    private String receiverUsername;
 
     @ManyToMany
     @JoinTable(name = "CATEGORY_ASSIGNMENTS", joinColumns = {
@@ -61,13 +61,13 @@ public class Endorsement implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date created;
 
-    public Endorsement(UUID granterUuid, UUID receiverUuid, int score, String url, String reason) {
-        this.uuid = UUID.randomUUID();
-        this.granterUuid = granterUuid;
-        this.receiverUuid = receiverUuid;
-        this.score = score;
-        this.url = url;
-        this.reason = reason;
-    }
+//    public Endorsement(UUID granterUuid, UUID receiverUuid, int score, String url, String reason) {
+//        this.uuid = UUID.randomUUID();
+//        this.granterUsername = granterUuid;
+//        this.receiverUuid = receiverUuid;
+//        this.score = score;
+//        this.url = url;
+//        this.reason = reason;
+//    }
 
 }
