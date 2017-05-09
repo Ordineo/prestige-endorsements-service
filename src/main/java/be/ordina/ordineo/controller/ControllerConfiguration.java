@@ -1,4 +1,4 @@
-package be.ordina.ordineo.config;
+package be.ordina.ordineo.controller;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

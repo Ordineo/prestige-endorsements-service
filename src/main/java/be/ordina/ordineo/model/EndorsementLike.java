@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -18,7 +20,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "ENDORSEMENT_LIKES")
-public class EndorsementLike {
+public class EndorsementLike implements Serializable, Identifiable<UUID> {
 
     // Primary Key
     @Id
@@ -37,6 +39,18 @@ public class EndorsementLike {
     @Column(name = "CREATED", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     @Temporal(TemporalType.DATE)
     private Date created;
+
+    @Override
+    public UUID getId() {
+        return uuid;
+    }
+
+    @PrePersist
+    public void generateUuid() {
+        if (getUuid() == null) {
+            setUuid(UUID.randomUUID());
+        }
+    }
 
 //    public EndorsementLike(/*User user, */UUID granterUuid, String reason) {
 ////        this.user = user;

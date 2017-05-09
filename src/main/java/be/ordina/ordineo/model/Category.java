@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -18,8 +20,10 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "CATEGORIES")
-public class Category implements Serializable {
+@Table(name = "CATEGORIES" ,uniqueConstraints={
+        @UniqueConstraint(columnNames = "ID"),
+        @UniqueConstraint(columnNames = "NAME")})
+public class Category implements Serializable, Identifiable<Long> {
 
     // Primary Key
     @Id
@@ -28,7 +32,7 @@ public class Category implements Serializable {
     private Long id;
 
     @ManyToMany(mappedBy = "categories")
-    private Collection<Endorsement> endorsements;
+    private List<Endorsement> endorsements;
 
     @Column(name = "NAME", length = 60)
     private String name;

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,7 +19,7 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name = "ENDORSEMENTS")
-public class Endorsement implements Serializable {
+public class Endorsement implements Serializable, Identifiable<UUID> {
 
     // Primary Key
     @Id
@@ -61,7 +62,19 @@ public class Endorsement implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date created;
 
-//    public Endorsement(UUID granterUuid, UUID receiverUuid, int score, String url, String reason) {
+    @Override
+    public UUID getId() {
+        return uuid;
+    }
+
+    @PrePersist
+    public void generateUuid() {
+        if (getUuid() == null) {
+            setUuid(UUID.randomUUID());
+        }
+    }
+
+    //    public Endorsement(UUID granterUuid, UUID receiverUuid, int score, String url, String reason) {
 //        this.uuid = UUID.randomUUID();
 //        this.granterUsername = granterUuid;
 //        this.receiverUuid = receiverUuid;
