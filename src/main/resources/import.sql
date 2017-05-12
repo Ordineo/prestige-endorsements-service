@@ -4,10 +4,10 @@ INSERT INTO CATEGORIES (NAME) VALUES ('Coffee');
 INSERT INTO CATEGORIES (NAME) VALUES ('Briefing');
 INSERT INTO CATEGORIES (NAME) VALUES ('Workshop');
 
-INSERT INTO ENDORSEMENTS ("UUID", GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 'ChrisDeBruyne', 'davedeg', 1, 'De presentatie was super duidelijk', 'https://www.ordina.be/');
-INSERT INTO ENDORSEMENTS ("UUID", GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('5a97c460-f96d-4b7b-89a6-a824cbeedaea', 'gurtjun', 'davedeg', 1, 'Bedankt voor de goede koffie', 'https://www.google.be/');
-INSERT INTO ENDORSEMENTS ("UUID", GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('b630fb1c-3e47-4cee-bf40-af906ced41c4', 'jasperbiesemans', 'inesvanstappen', 1, 'Alles rond de workshop was geweldig, veel bijgeleerd!', 'https://www.facebook.com/');
-INSERT INTO ENDORSEMENTS ("UUID", GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('2405edf4-4393-4c03-acfb-8bd84d8f0b82', 'fbousson', 'DimiDeKerf', 1, 'Heel gestructureerde email', 'https://www.ordina.be/');
+INSERT INTO ENDORSEMENTS (UUID, GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 'ChrisDeBruyne', 'davedeg', 1, 'De presentatie was super duidelijk', 'https://www.ordina.be/');
+INSERT INTO ENDORSEMENTS (UUID, GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('5a97c460-f96d-4b7b-89a6-a824cbeedaea', 'gurtjun', 'davedeg', 1, 'Bedankt voor de goede koffie', 'https://www.google.be/');
+INSERT INTO ENDORSEMENTS (UUID, GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('b630fb1c-3e47-4cee-bf40-af906ced41c4', 'jasperbiesemans', 'inesvanstappen', 1, 'Alles rond de workshop was geweldig, veel bijgeleerd!', 'https://www.facebook.com/');
+INSERT INTO ENDORSEMENTS (UUID, GRANTER_USERNAME, RECEIVER_USERNAME, SCORE, REASON, URL) VALUES ('2405edf4-4393-4c03-acfb-8bd84d8f0b82', 'fbousson', 'DimiDeKerf', 1, 'Heel gestructureerde email', 'https://www.ordina.be/');
 
 INSERT INTO CATEGORY_ASSIGNMENTS (ENDORSEMENT_UUID, CATEGORY_ID) VALUES ('a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 1);
 INSERT INTO CATEGORY_ASSIGNMENTS (ENDORSEMENT_UUID, CATEGORY_ID) VALUES ('a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 4);
@@ -17,8 +17,8 @@ INSERT INTO CATEGORY_ASSIGNMENTS (ENDORSEMENT_UUID, CATEGORY_ID) VALUES ('b630fb
 INSERT INTO CATEGORY_ASSIGNMENTS (ENDORSEMENT_UUID, CATEGORY_ID) VALUES ('b630fb1c-3e47-4cee-bf40-af906ced41c4', 5);
 INSERT INTO CATEGORY_ASSIGNMENTS (ENDORSEMENT_UUID, CATEGORY_ID) VALUES ('2405edf4-4393-4c03-acfb-8bd84d8f0b82', 2);
 
-INSERT INTO ENDORSEMENT_LIKES ("UUID", GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (RANDOM_UUID(), 'Tyranwyn', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz');
-INSERT INTO ENDORSEMENT_LIKES ("UUID", GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (RANDOM_UUID(), 'DavyDeRaeve', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz too');
-INSERT INTO ENDORSEMENT_LIKES ("UUID", GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (RANDOM_UUID(), 'bartcleven', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz three');
-INSERT INTO ENDORSEMENT_LIKES ("UUID", GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (RANDOM_UUID(), 'AnthonySlabinck', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz four');
-INSERT INTO ENDORSEMENT_LIKES ("UUID", GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (RANDOM_UUID(), 'Tyranwyn', 'a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 'Amuzing');
+INSERT INTO ENDORSEMENT_LIKES (UUID, GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (uuid_generate_v4(), 'Tyranwyn', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz');
+INSERT INTO ENDORSEMENT_LIKES (UUID, GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (uuid_generate_v4(), 'DavyDeRaeve', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz too');
+INSERT INTO ENDORSEMENT_LIKES (UUID, GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (uuid_generate_v4(), 'bartcleven', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz three');
+INSERT INTO ENDORSEMENT_LIKES (UUID, GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (uuid_generate_v4(), 'AnthonySlabinck', 'b630fb1c-3e47-4cee-bf40-af906ced41c4', 'Cuz i liek diz four');
+INSERT INTO ENDORSEMENT_LIKES (UUID, GRANTER_USERNAME, ENDORSEMENT_UUID, REASON) VALUES (uuid_generate_v4(), 'Tyranwyn', 'a2a48938-0e5a-402e-a7ac-0c9bb35c37cc', 'Amuzing');
