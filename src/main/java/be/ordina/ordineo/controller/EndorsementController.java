@@ -4,6 +4,7 @@ import be.ordina.ordineo.exception.FieldEmptyException;
 import be.ordina.ordineo.model.Endorsement;
 import be.ordina.ordineo.resourceassembler.EndorsementResourceAssembler;
 import be.ordina.ordineo.service.EndorsementService;
+import be.ordina.ordineo.service.TokenAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Base64;
 import java.util.UUID;
 
 /**
@@ -101,9 +104,13 @@ public class EndorsementController {
 
     @RequestMapping(value = "",method = RequestMethod.POST, consumes = {"application/json","application/hal+json"},
             produces = {"application/json","application/hal+json"})//question are we gonna use hibernate validator ---> then i can use @Valid or not??,,
-    public ResponseEntity<Void> save(@RequestBody @Valid Endorsement endorsement, UriComponentsBuilder ucBuilder  ){
-        if(!endorsement.getCategories().isEmpty())
+    public ResponseEntity<Void> save(@RequestBody @Valid Endorsement endorsement, UriComponentsBuilder ucBuilder, HttpServletRequest request){
+        Authentication authentication = TokenAuthenticationService.getAuthentication(request);
+
+        if(!endorsement.getCategories().isEmpty()) {
+            endorsement.setGranterUsername(authentication.getName());
             endorsement = endorsementService.saveWithCategories(endorsement);
+        }
         else
             throw new FieldEmptyException("No categories are given!");
 

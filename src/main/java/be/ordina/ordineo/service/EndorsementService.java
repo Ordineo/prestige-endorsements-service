@@ -57,6 +57,7 @@ public class EndorsementService {
     @Transactional
     public Endorsement saveWithCategories(Endorsement endorsement) {
         // TODO: Need to check if granter and receiver are in the Employees database
+
         List<Category> categories = endorsement.getCategories();
         categories.forEach(category -> {
             Category existingCategory = categoryService.findByName(category.getName());
